@@ -1,6 +1,12 @@
-Flask==2.3.3
-Flask-SQLAlchemy==3.1.1
-psycopg2-binary==2.9.9
-gunicorn==21.2.0
-requests==2.31.0
-humanize==4.9.0
+Flask==2.3.3 --hash=sha256:b1c0119b9d6af0d9f9b4a99123bdef2f9d298a92b93068fb43532ed32364cad7
+werkzeug==3.1.8 --hash=sha256:8ee48aadf7f602d120b2baa3e8ac7cf42745cc845133c5468f1e7ee3dac59dd6
+jinja2==3.1.6 --hash=sha256:6e222c49d0e86b36b308573444fdbe24e34e6a18366d967d7132e4b69aad7cb2
+itsdangerous==2.2.0 --hash=sha256:1b7ad72852e2e0f9c528fd67592e887cf047c81206a1f399f847175417ad65bc
+click==8.4.1 --hash=sha256:bdde7c10d5d1b1033696b07e492b00c5f9055887233c006b7d9590de41cb8230
+blinker==1.9.0 --hash=sha256:90c25a664ba4531a7920db7d7205e2d69b8d1ae9a5c9f56b141572d4ecf82d73
+markupsafe==3.0.3 --hash=sha256:6630f56dc69d9984e97aa4ad8ea29e9c48f12dec63037c6f8f80f4f4533ef54e
+Flask-SQLAlchemy==3.1.1 --hash=sha256:eeee0a10f62eb6a0a16ee18058db1b1487493cf912fd762a0ff8f3191e3e9f14
+sqlalchemy==2.0.50 --hash=sha256:eb8cc04a0c45bce08c6e80d1432d3153936ac8db7f80739fbabec67786c4ffd9
+greenlet==3.5.1 --hash=sha256:eda440ab9105b5fc234d335ea9408cf5e5b12d512f8b2e3008bbd99522fbcd63
+typing_extensions==4.15.0 --hash=sha256:05fa8d0bd85fa35f1dcd96e252e645021e1b9f143462e94069a4864b043adb94
+psycopg2-binary==2.9.11 --hash=sha256:5390a0fc7b6795ed77cf878ba1f733872f69f16ba240b83f99e1cc9a821eb837

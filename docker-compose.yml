@@ -1,29 +1,46 @@
-version: '3.9'
 services:
   web:
     build:
       context: ./app
+      secrets:
+        - source: chainguard_id
+          target: chainguard_id
+        - source: chainguard_token
+          target: chainguard_token
     ports:
-      - "8000:8000"
-    environment:
-      DATABASE_URL: postgresql://postgres:postgres@db:5432/todos
-      SECRET_KEY: not-so-secret
+      - "8004:8000"
     depends_on:
-      - db
+      db:
+        condition: service_healthy
     volumes:
       - ./app:/app
+    env_file:
+      - .env
+    environment:
+      DB_HOST: db
 
   db:
-    image: postgres:15
+    image: cgr.dev/chainguard/postgres:latest
     ports:
-      - "5432:5432"
+      - "5435:5432"
     environment:
-      POSTGRES_DB: todos
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_NAME}
     volumes:
       - postgres_data:/var/lib/postgresql/data
       - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USER} -d ${DB_NAME}"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
 
 volumes:
   postgres_data:
+
+secrets:
+  chainguard_id:
+    file: .secrets/cg_id.txt
+  chainguard_token:
+    file: .secrets/cg_token.txt
